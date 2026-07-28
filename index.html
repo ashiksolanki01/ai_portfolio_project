@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aashik Solanki — AI & Machine Learning Portfolio</title>
+  <meta name="description" content="Portfolio of Aashik Solanki — AI & Machine Learning student and developer. Explore neural network projects, interactive demos, and skills matrix." />
+  <meta name="keywords" content="Aashik Solanki, AI Engineer, Machine Learning, Python, PyTorch, Portfolio, Web Developer" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Ambient Light Background Blobs -->
+  <div class="ambient-bg">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- Reading Scroll Progress Bar -->
+  <div id="scroll-progress"></div>
+
+  <!-- Header Navigation -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#" class="logo-badge">
+        <div class="logo-icon">AS</div>
+        <span>Aashik Solanki<span class="gradient-text">.ai</span></span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#terminal" class="nav-link">Terminal $</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#timeline" class="nav-link">Timeline</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="theme-toggle" class="btn-icon" aria-label="Toggle Theme" title="Switch Theme">
+          <i class="fa-solid fa-moon" id="theme-icon"></i>
+        </button>
+        <button id="mobile-toggle" class="btn-icon mobile-toggle" aria-label="Toggle Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="about" class="hero-section">
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        <span>Open for AI & Software Engineering Internships</span>
+      </div>
+
+      <h1 class="hero-title">
+        Building intelligent systems with <span class="gradient-text">code & data.</span>
+      </h1>
+
+      <div class="hero-typewriter">
+        <span>$ I am a</span>
+        <span class="typewriter-text" id="typewriter"></span>
+        <span class="cursor"></span>
+      </div>
+
+      <p class="hero-description">
+        Hi! I'm <strong>Aashik Solanki</strong>, an AI &amp; Machine Learning student. I engineer predictive models, fine-tune neural architectures, and build modern web applications that bring machine intelligence to life.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">
+          <i class="fa-solid fa-rocket"></i> Explore Projects
+        </a>
+        <a href="#terminal" class="btn btn-secondary">
+          <i class="fa-solid fa-terminal"></i> Open Terminal $
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <i class="fa-regular fa-paper-plane"></i> Get in Touch
+        </a>
+      </div>
+
+      <!-- Quick Metrics Grid -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">99.1%</div>
+          <div class="stat-label">Model Accuracy (MNIST CNN)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">3+</div>
+          <div class="stat-label">Core AI/ML Projects</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Tech Stack Tools &amp; Libraries</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">100k+</div>
+          <div class="stat-label">Dataset Records Processed</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Terminal CLI Section -->
+    <section id="terminal">
+      <div class="section-header">
+        <div class="section-tag"><i class="fa-solid fa-code"></i> CLI MODE</div>
+        <h2 class="section-title">Interactive Terminal</h2>
+        <p class="section-subtitle">Type commands or click quick prompts to query my profile like a terminal.</p>
+      </div>
+
+      <div class="terminal-wrapper">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <div class="terminal-title">aashik@solanki-portfolio:~ (zsh)</div>
+          <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-subtle);">utf-8</div>
+        </div>
+
+        <div class="terminal-body" id="terminal-body">
+          <div class="terminal-log" id="terminal-log">
+            <div class="terminal-line">
+              <span style="color: var(--accent-cyan);">Welcome to Aashik Solanki's CLI v2.4.0</span>
+            </div>
+            <div class="terminal-line" style="color: var(--text-subtle);">
+              Type <span style="color: var(--accent-amber);">'help'</span> for available commands, or try clicking a quick prompt chip below.
+            </div>
+          </div>
+
+          <div class="terminal-input-row">
+            <span class="cmd-prompt">aashik@portfolio:~$</span>
+            <input type="text" id="terminal-input" class="terminal-input" placeholder="type 'help' or 'whoami'..." autocomplete="off" spellcheck="false" />
+          </div>
+        </div>
+
+        <div class="terminal-hints">
+          <span>Quick Commands:</span>
+          <button class="chip-btn" data-cmd="whoami">whoami</button>
+          <button class="chip-btn" data-cmd="skills">skills</button>
+          <button class="chip-btn" data-cmd="projects">projects</button>
+          <button class="chip-btn" data-cmd="contact">contact</button>
+          <button class="chip-btn" data-cmd="matrix">matrix</button>
+          <button class="chip-btn" data-cmd="clear">clear</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <div class="section-header">
+        <div class="section-tag"><i class="fa-solid fa-diagram-project"></i> PORTFOLIO LOG</div>
+        <h2 class="section-title">Featured AI &amp; Software Projects</h2>
+        <p class="section-subtitle">Filter by category or click any project card to open details and interactive live demos.</p>
+      </div>
+
+      <!-- Controls: Search & Tabs -->
+      <div class="projects-controls">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="project-search" class="search-input" placeholder="Search projects by title, language, or algorithm..." />
+        </div>
+
+        <div class="filter-tabs">
+          <button class="tab-btn active" data-filter="all">All Projects</button>
+          <button class="tab-btn" data-filter="ai-ml">Machine Learning</button>
+          <button class="tab-btn" data-filter="nlp">NLP &amp; Transformers</button>
+          <button class="tab-btn" data-filter="vision">Computer Vision</button>
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="projects-grid" id="projects-grid">
+        <!-- Project Card 1 -->
+        <div class="project-card" data-category="vision ai-ml" data-tags="python pytorch cnn mnist flask computer vision">
+          <div class="project-banner">
+            <span class="project-banner-icon">✏️</span>
+            <span class="project-badge">Vision / CNN</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Handwritten Digit Classifier</h3>
+            <p class="project-desc">A deep Convolutional Neural Network (CNN) trained on MNIST achieving 99.1% accuracy with live canvas digit drawing prediction.</p>
+            <div class="project-metrics">
+              <div class="metric-item">Accuracy: <span>99.1%</span></div>
+              <div class="metric-item">Epochs: <span>20</span></div>
+              <div class="metric-item">Framework: <span>PyTorch</span></div>
+            </div>
+            <div class="project-tags">
+              <span class="tag">PyTorch</span>
+              <span class="tag">CNN</span>
+              <span class="tag">Flask</span>
+              <span class="tag">Canvas JS</span>
+            </div>
+            <div class="project-actions">
+              <button class="btn btn-primary btn-sm open-demo-btn" data-project="digit-classifier" style="flex: 1;">
+                <i class="fa-solid fa-play"></i> Live Demo &amp; Code
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Card 2 -->
+        <div class="project-card" data-category="ai-ml" data-tags="python pandas scikit-learn collaborative-filtering recommendation">
+          <div class="project-banner">
+            <span class="project-banner-icon">🎬</span>
+            <span class="project-badge">Recommender / ML</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Movie Recommendation Engine</h3>
+            <p class="project-desc">Collaborative filtering matrix factorization system trained on 100k+ ratings with cosine similarity for cold-start user recommendations.</p>
+            <div class="project-metrics">
+              <div class="metric-item">Ratings: <span>100,000+</span></div>
+              <div class="metric-item">RMSE: <span>0.84</span></div>
+              <div class="metric-item">Algo: <span>KNN + Cosine</span></div>
+            </div>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">Scikit-learn</span>
+              <span class="tag">Surprise</span>
+            </div>
+            <div class="project-actions">
+              <button class="btn btn-primary btn-sm open-demo-btn" data-project="movie-recommender" style="flex: 1;">
+                <i class="fa-solid fa-play"></i> Live Demo &amp; Code
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Card 3 -->
+        <div class="project-card" data-category="nlp ai-ml" data-tags="huggingface bert transformers javascript sentiment nlp">
+          <div class="project-banner">
+            <span class="project-banner-icon">💬</span>
+            <span class="project-badge">NLP / Transformers</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Sentiment Analysis on Reviews</h3>
+            <p class="project-desc">Fine-tuned transformer model (DistilBERT) for multi-class review sentiment classification with error analysis visualizer.</p>
+            <div class="project-metrics">
+              <div class="metric-item">F1 Score: <span>94.2%</span></div>
+              <div class="metric-item">Model: <span>DistilBERT</span></div>
+              <div class="metric-item">Speed: <span>45ms</span></div>
+            </div>
+            <div class="project-tags">
+              <span class="tag">HuggingFace</span>
+              <span class="tag">PyTorch</span>
+              <span class="tag">Transformers</span>
+              <span class="tag">Chart.js</span>
+            </div>
+            <div class="project-actions">
+              <button class="btn btn-primary btn-sm open-demo-btn" data-project="sentiment-analyzer" style="flex: 1;">
+                <i class="fa-solid fa-play"></i> Live Demo &amp; Code
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <div class="section-header">
+        <div class="section-tag"><i class="fa-solid fa-layer-group"></i> TECH STACK</div>
+        <h2 class="section-title">Skills &amp; Frameworks</h2>
+        <p class="section-subtitle">Technologies, libraries, and tools I use to design and train artificial intelligence systems.</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-header">
+            <span class="skill-name"><i class="fa-brands fa-python" style="color: #3776ab;"></i> Python &amp; Data Science</span>
+            <span class="skill-pct">92%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="92%"></div></div>
+          <p style="font-size: 0.825rem; color: var(--text-muted); margin-top: 0.6rem;">NumPy, Pandas, Matplotlib, SciPy</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <span class="skill-name"><i class="fa-solid fa-brain" style="color: #ee4c2c;"></i> PyTorch &amp; Deep Learning</span>
+            <span class="skill-pct">88%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="88%"></div></div>
+          <p style="font-size: 0.825rem; color: var(--text-muted); margin-top: 0.6rem;">CNNs, RNNs, Model Fine-tuning, TensorBoard</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <span class="skill-name"><i class="fa-solid fa-robot" style="color: #ff9900;"></i> Scikit-Learn &amp; ML</span>
+            <span class="skill-pct">90%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="90%"></div></div>
+          <p style="font-size: 0.825rem; color: var(--text-muted); margin-top: 0.6rem;">Regression, Classification, Clustering, SVM, Random Forest</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <span class="skill-name"><i class="fa-solid fa-comments" style="color: #00f2fe;"></i> NLP &amp; HuggingFace</span>
+            <span class="skill-pct">82%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="82%"></div></div>
+          <p style="font-size: 0.825rem; color: var(--text-muted); margin-top: 0.6rem;">BERT, Transformers, Tokenization, Text Mining</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <span class="skill-name"><i class="fa-brands fa-js" style="color: #f7df1e;"></i> Modern Web Stack</span>
+            <span class="skill-pct">85%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
+          <p style="font-size: 0.825rem; color: var(--text-muted); margin-top: 0.6rem;">HTML5, CSS3, JavaScript ES6+, Flask, REST APIs</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <span class="skill-name"><i class="fa-solid fa-terminal" style="color: #10b981;"></i> Developer Tools &amp; Git</span>
+            <span class="skill-pct">88%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="88%"></div></div>
+          <p style="font-size: 0.825rem; color: var(--text-muted); margin-top: 0.6rem;">Git, GitHub, Jupyter Notebooks, VS Code, Linux Shell</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience / Education Timeline Section -->
+    <section id="timeline">
+      <div class="section-header">
+        <div class="section-tag"><i class="fa-solid fa-graduation-cap"></i> JOURNEY</div>
+        <h2 class="section-title">Education &amp; Milestones</h2>
+        <p class="section-subtitle">Academic background, project highlights, and continuous learning path.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-date">2024 — PRESENT</div>
+            <h3 class="timeline-role">Semester 5 — Information Management &amp; AI</h3>
+            <div class="timeline-org">Marwadi University (MU)</div>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">
+              Focusing on Machine Learning algorithms, Data Structures &amp; Analysis, Neural Network Architecture, and Information Management Systems.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-date">2026 — PROJECT RELEASE</div>
+            <h3 class="timeline-role">Deep Learning &amp; Computer Vision Projects</h3>
+            <div class="timeline-org">Independent AI Research &amp; Building</div>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">
+              Designed and evaluated PyTorch Convolutional Neural Networks on digit classification, sentiment transformers, and matrix recommender engines.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-date">FUTURE GOAL</div>
+            <h3 class="timeline-role">AI &amp; Machine Learning Engineering Intern</h3>
+            <div class="timeline-org">Targeting Innovative Tech Companies</div>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">
+              Seeking opportunities to contribute to real-world AI pipelines, LLM fine-tuning, computer vision systems, or intelligent full-stack applications.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="section-header">
+        <div class="section-tag"><i class="fa-regular fa-envelope"></i> GET IN TOUCH</div>
+        <h2 class="section-title">Let's Connect &amp; Collaborate</h2>
+        <p class="section-subtitle">Have a project, internship opportunity, or question? Send me a message!</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-card">
+            <div class="contact-icon"><i class="fa-regular fa-envelope"></i></div>
+            <div>
+              <div class="contact-label">Direct Email</div>
+              <div class="contact-value" id="email-text">aashiksolanki@example.com</div>
+              <button id="copy-email-btn" class="chip-btn" style="margin-top: 0.4rem;">
+                <i class="fa-regular fa-copy"></i> Copy Address
+              </button>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon"><i class="fa-brands fa-github"></i></div>
+            <div>
+              <div class="contact-label">GitHub Profile</div>
+              <div class="contact-value">github.com/aashiksolanki</div>
+              <a href="https://github.com/aashiksolanki" target="_blank" rel="noopener" class="chip-btn" style="display: inline-block; margin-top: 0.4rem;">
+                Visit Profile →
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+            <div>
+              <div class="contact-label">LinkedIn Network</div>
+              <div class="contact-value">linkedin.com/in/aashiksolanki</div>
+              <a href="https://linkedin.com/in/aashiksolanki" target="_blank" rel="noopener" class="chip-btn" style="display: inline-block; margin-top: 0.4rem;">
+                Connect →
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <form class="contact-form" id="contact-form">
+          <div class="form-group">
+            <label class="form-label" for="form-name">Your Name</label>
+            <input type="text" id="form-name" class="form-input" placeholder="e.g. Alex Morgan" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="form-email">Your Email</label>
+            <input type="email" id="form-email" class="form-input" placeholder="e.g. alex@example.com" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="form-subject">Subject</label>
+            <input type="text" id="form-subject" class="form-input" placeholder="Inquiry / Internship Opportunity" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="form-message">Message</label>
+            <textarea id="form-message" class="form-textarea" placeholder="Tell me about your project or opportunity..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            <i class="fa-regular fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Interactive Project Modal Backdrop & Dialog -->
+  <div class="modal-backdrop" id="project-modal">
+    <div class="modal-container">
+      <button class="modal-close-btn" id="modal-close" aria-label="Close Modal">&times;</button>
+      <div class="modal-body" id="modal-content">
+        <!-- Content will be injected dynamically via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Floating Back to Top Button -->
+  <button id="back-to-top" aria-label="Back to top" title="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>Designed &amp; Developed with <i class="fa-solid fa-heart" style="color: var(--accent-pink);"></i> by <strong>Aashik Solanki</strong></p>
+    <p style="margin-top: 0.4rem; font-size: 0.8rem; color: var(--text-subtle);">
+      Built using HTML5, CSS3 &amp; Pure JavaScript · Version 2.4.0
+    </p>
+  </footer>
+
+  <!-- Script File -->
+  <script src="script.js"></script>
+</body>
+</html>
