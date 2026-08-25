@@ -154,9 +154,12 @@ document.addEventListener('DOMContentLoaded', () => {
   • <span style="color: var(--accent-cyan);">whoami</span>      - Brief summary about Aashik
   • <span style="color: var(--accent-cyan);">skills</span>      - Technical stack & proficiencies
   • <span style="color: var(--accent-cyan);">projects</span>    - List featured AI/ML projects
+  • <span style="color: var(--accent-cyan);">labs</span>        - Practical Labs & Experiments (Exp 2 & 3)
+  • <span style="color: var(--accent-cyan);">exp2</span>        - Dynamic UI DOM manipulation lab details
+  • <span style="color: var(--accent-cyan);">exp3</span>        - Chart.js Data Visualization dashboard
+  • <span style="color: var(--accent-cyan);">charts</span>      - Sample dataset stats summary
   • <span style="color: var(--accent-cyan);">contact</span>     - View contact methods
   • <span style="color: var(--accent-cyan);">matrix</span>      - Run a fun terminal ASCII visualizer
-  • <span style="color: var(--accent-cyan);">date</span>        - Current server timestamp
   • <span style="color: var(--accent-cyan);">clear</span>       - Clear terminal screen`,
 
     whoami: `<span style="color: #fff; font-weight: 600;">Aashik Solanki</span>
@@ -175,6 +178,24 @@ Passionate about building deep neural networks, computer vision applications, an
   1. <span style="color: #fff;">Handwritten Digit Classifier</span> [PyTorch, CNN, 99.1% Acc]
   2. <span style="color: #fff;">Movie Recommendation Engine</span> [Collaborative Filtering, 100k Ratings]
   3. <span style="color: #fff;">Sentiment Analysis on Product Reviews</span> [DistilBERT Transformer]`,
+
+    labs: `<span style="color: var(--accent-teal); font-weight: 600;">Academic Practical Labs:</span>
+  • <span style="color: var(--accent-cyan);">exp2</span>: Dynamic UI & Real-Time DOM Text Engine
+  • <span style="color: var(--accent-cyan);">exp3</span>: Interactive Chart.js Visualization Dashboard`,
+
+    exp2: `<span style="color: var(--accent-cyan); font-weight: 600;">Experiment 2 Overview:</span>
+  Aim: Build a responsive UI that dynamically updates text based on user input using JavaScript.
+  Status: Interactive Playground active in #labs section. Try typing in the title/paragraph inputs!`,
+
+    exp3: `<span style="color: var(--accent-teal); font-weight: 600;">Experiment 3 Overview:</span>
+  Aim: Create an interactive Line and Bar chart dashboard using Chart.js to display dataset statistics.
+  Sample Dataset: Jan (120/50), Feb (150/60), Mar (180/75), Apr (170/68), May (210/85), Jun (240/95).
+  Status: Live Chart.js dashboard rendering in #labs section!`,
+
+    charts: `<span style="color: var(--accent-amber); font-weight: 600;">Dataset Visualizer (Jan–Jun):</span>
+  • Sales: 120, 150, 180, 170, 210, 240
+  • Orders: 50, 60, 75, 68, 85, 95
+  Line and Bar charts initialized with Chart.js.`,
 
     contact: `Email: <a href="mailto:aashiksolanki@example.com" style="color: var(--accent-cyan); text-decoration: underline;">aashiksolanki@example.com</a>
 GitHub: <a href="https://github.com/aashiksolanki" target="_blank" style="color: var(--accent-cyan); text-decoration: underline;">github.com/aashiksolanki</a>
@@ -672,5 +693,399 @@ def predict_sentiment(text):
       setTimeout(() => toast.remove(), 300);
     }, 3200);
   }
+
+  /* ------------------------------------------------------------------------
+     11. Experiment 2: Dynamic UI & Real-Time DOM Text Engine
+     ------------------------------------------------------------------------ */
+  function initExp2Engine() {
+    const headingInput = document.getElementById('exp2-heading-input');
+    const paragraphInput = document.getElementById('exp2-paragraph-input');
+    const badgeSelect = document.getElementById('exp2-badge-select');
+    const styleSelect = document.getElementById('exp2-style-select');
+    const resetBtn = document.getElementById('exp2-reset-btn');
+    const sampleBtn = document.getElementById('exp2-sample-btn');
+
+    const validationBox = document.getElementById('exp2-validation-box');
+    const valIcon = document.getElementById('exp2-val-icon');
+    const valMsg = document.getElementById('exp2-val-msg');
+
+    const previewBadge = document.getElementById('exp2-preview-badge');
+    const previewHeading = document.getElementById('exp2-preview-heading');
+    const previewParagraph = document.getElementById('exp2-preview-paragraph');
+
+    const charCountEl = document.getElementById('exp2-char-count');
+    const wordCountEl = document.getElementById('exp2-word-count');
+    const timeStampEl = document.getElementById('exp2-time-stamp');
+
+    if (!headingInput || !paragraphInput) return;
+
+    function updateExp2Preview() {
+      const headingVal = headingInput.value.trim();
+      const paragraphVal = paragraphInput.value;
+      const badgeVal = badgeSelect.value;
+      const styleVal = styleSelect.value;
+
+      // Validation check
+      if (headingVal === '') {
+        validationBox.className = 'validation-box status-warn';
+        valIcon.className = 'fa-solid fa-triangle-exclamation';
+        valMsg.textContent = 'Heading is empty — showing fallback title.';
+        previewHeading.textContent = 'Untitled Heading';
+      } else if (paragraphVal.length > 250) {
+        validationBox.className = 'validation-box status-warn';
+        valIcon.className = 'fa-solid fa-circle-exclamation';
+        valMsg.textContent = 'Warning: Character count exceeds 250 chars limit.';
+        previewHeading.textContent = applyStyleVariant(headingVal, styleVal);
+      } else {
+        validationBox.className = 'validation-box status-valid';
+        valIcon.className = 'fa-solid fa-circle-check';
+        valMsg.textContent = 'Input valid: Dynamic text rendered live.';
+        previewHeading.textContent = applyStyleVariant(headingVal, styleVal);
+      }
+
+      previewParagraph.textContent = applyStyleVariant(paragraphVal || 'Type text above to update paragraph...', styleVal);
+
+      // Badge style
+      previewBadge.className = `preview-badge badge-${badgeVal}`;
+      previewBadge.textContent = `${badgeVal.toUpperCase()} TAG`;
+
+      // Counters
+      const totalChars = (headingVal + paragraphVal).length;
+      const totalWords = (headingVal + ' ' + paragraphVal).trim() ? (headingVal + ' ' + paragraphVal).trim().split(/\s+/).length : 0;
+
+      charCountEl.textContent = totalChars;
+      wordCountEl.textContent = totalWords;
+
+      const now = new Date();
+      timeStampEl.textContent = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
+    }
+
+    function applyStyleVariant(text, variant) {
+      if (variant === 'uppercase') return text.toUpperCase();
+      if (variant === 'lowercase') return text.toLowerCase();
+      if (variant === 'monospace') return text;
+      return text;
+    }
+
+    styleSelect.addEventListener('change', () => {
+      previewHeading.className = 'preview-heading';
+      previewParagraph.className = 'preview-paragraph';
+      if (styleSelect.value === 'uppercase') {
+        previewHeading.classList.add('variant-uppercase');
+        previewParagraph.classList.add('variant-uppercase');
+      } else if (styleSelect.value === 'lowercase') {
+        previewHeading.classList.add('variant-lowercase');
+        previewParagraph.classList.add('variant-lowercase');
+      } else if (styleSelect.value === 'monospace') {
+        previewHeading.classList.add('variant-monospace');
+        previewParagraph.classList.add('variant-monospace');
+      }
+      updateExp2Preview();
+    });
+
+    headingInput.addEventListener('input', updateExp2Preview);
+    paragraphInput.addEventListener('input', updateExp2Preview);
+    badgeSelect.addEventListener('change', updateExp2Preview);
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        headingInput.value = 'Dynamic AI Web Assistant';
+        paragraphInput.value = 'DOM manipulation enables real-time text updates, dynamic styling changes, and interactive validation feedback without re-loading the page.';
+        badgeSelect.value = 'cyan';
+        styleSelect.value = 'normal';
+        previewHeading.className = 'preview-heading';
+        previewParagraph.className = 'preview-paragraph';
+        updateExp2Preview();
+        showToast('Form reset to default sample!', 'info');
+      });
+    }
+
+    if (sampleBtn) {
+      sampleBtn.addEventListener('click', () => {
+        headingInput.value = 'Intelligent Web Designing & Neural Dashboards';
+        paragraphInput.value = 'JavaScript captures user input, updates DOM elements dynamically, and powers responsive visualizations seamlessly across device viewports.';
+        badgeSelect.value = 'teal';
+        updateExp2Preview();
+        showToast('Sample dataset inserted into Form!', 'success');
+      });
+    }
+
+    updateExp2Preview();
+  }
+
+  initExp2Engine();
+
+  /* ------------------------------------------------------------------------
+     12. Experiment 3: Chart.js Interactive Data Dashboard
+     ------------------------------------------------------------------------ */
+  function initExp3Dashboard() {
+    const salesCanvas = document.getElementById('salesLineChart');
+    const ordersCanvas = document.getElementById('ordersBarChart');
+    const tableBody = document.getElementById('dataset-table-body');
+
+    if (!salesCanvas || !ordersCanvas || typeof Chart === 'undefined') return;
+
+    // Sample Dataset from Experiment 3 specs
+    let datasetData = [
+      { month: 'Jan', sales: 120, orders: 50 },
+      { month: 'Feb', sales: 150, orders: 60 },
+      { month: 'Mar', sales: 180, orders: 75 },
+      { month: 'Apr', sales: 170, orders: 68 },
+      { month: 'May', sales: 210, orders: 85 },
+      { month: 'Jun', sales: 240, orders: 95 }
+    ];
+
+    let salesChartInstance = null;
+    let ordersChartInstance = null;
+
+    function getThemeColors() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      return {
+        textColor: isDark ? '#9ca3af' : '#475569',
+        gridColor: isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)',
+        cyanLine: isDark ? '#00f2fe' : '#0284c7',
+        cyanFill: isDark ? 'rgba(0, 242, 254, 0.15)' : 'rgba(2, 132, 199, 0.15)',
+        tealBar: isDark ? '#00f5d4' : '#0d9488',
+        tealHover: isDark ? '#4facfe' : '#0284c7'
+      };
+    }
+
+    function renderDatasetTable() {
+      if (!tableBody) return;
+      tableBody.innerHTML = '';
+
+      datasetData.forEach((row, idx) => {
+        const prevSales = idx > 0 ? datasetData[idx - 1].sales : row.sales;
+        const trendDiff = row.sales - prevSales;
+        const trendPct = idx === 0 ? 'Baseline' : `${trendDiff >= 0 ? '+' : ''}${((trendDiff / prevSales) * 100).toFixed(1)}%`;
+        const trendColor = trendDiff >= 0 ? 'var(--accent-teal)' : 'var(--accent-pink)';
+
+        const orderRatio = row.sales > 0 ? ((row.orders / row.sales) * 100).toFixed(1) : '0';
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td style="font-weight: 600; color: var(--text-main);">${row.month}</td>
+          <td>
+            <input type="number" class="table-input sales-input" data-index="${idx}" value="${row.sales}" min="0" max="1000" />
+          </td>
+          <td>
+            <input type="number" class="table-input orders-input" data-index="${idx}" value="${row.orders}" min="0" max="1000" />
+          </td>
+          <td style="color: ${trendColor}; font-weight: 600; font-family: var(--font-mono);">${trendPct}</td>
+          <td style="font-family: var(--font-mono); color: var(--accent-cyan);">${orderRatio}%</td>
+        `;
+        tableBody.appendChild(tr);
+      });
+
+      // Add event listeners to input fields
+      document.querySelectorAll('.sales-input').forEach(input => {
+        input.addEventListener('change', (e) => {
+          const index = parseInt(e.target.getAttribute('data-index'));
+          const val = parseInt(e.target.value) || 0;
+          datasetData[index].sales = val;
+          updateCharts();
+          renderDatasetTable();
+        });
+      });
+
+      document.querySelectorAll('.orders-input').forEach(input => {
+        input.addEventListener('change', (e) => {
+          const index = parseInt(e.target.getAttribute('data-index'));
+          const val = parseInt(e.target.value) || 0;
+          datasetData[index].orders = val;
+          updateCharts();
+          renderDatasetTable();
+        });
+      });
+    }
+
+    function createCharts() {
+      const colors = getThemeColors();
+
+      const labels = datasetData.map(d => d.month);
+      const salesValues = datasetData.map(d => d.sales);
+      const ordersValues = datasetData.map(d => d.orders);
+
+      // Line Chart (Sales)
+      salesChartInstance = new Chart(salesCanvas, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Monthly Sales',
+            data: salesValues,
+            borderColor: colors.cyanLine,
+            backgroundColor: colors.cyanFill,
+            fill: true,
+            tension: 0.35,
+            pointBackgroundColor: colors.cyanLine,
+            pointBorderColor: '#fff',
+            pointHoverRadius: 7,
+            pointRadius: 5
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: true, labels: { color: colors.textColor } },
+            tooltip: {
+              backgroundColor: 'rgba(17, 24, 39, 0.9)',
+              titleColor: '#00f2fe',
+              bodyColor: '#fff',
+              borderColor: 'rgba(0, 242, 254, 0.3)',
+              borderWidth: 1
+            }
+          },
+          scales: {
+            x: { grid: { color: colors.gridColor }, ticks: { color: colors.textColor } },
+            y: { grid: { color: colors.gridColor }, ticks: { color: colors.textColor } }
+          }
+        }
+      });
+
+      // Bar Chart (Orders)
+      ordersChartInstance = new Chart(ordersCanvas, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Monthly Orders',
+            data: ordersValues,
+            backgroundColor: colors.tealBar,
+            hoverBackgroundColor: colors.tealHover,
+            borderRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: true, labels: { color: colors.textColor } },
+            tooltip: {
+              backgroundColor: 'rgba(17, 24, 39, 0.9)',
+              titleColor: '#00f5d4',
+              bodyColor: '#fff',
+              borderColor: 'rgba(0, 245, 212, 0.3)',
+              borderWidth: 1
+            }
+          },
+          scales: {
+            x: { grid: { color: colors.gridColor }, ticks: { color: colors.textColor } },
+            y: { grid: { color: colors.gridColor }, ticks: { color: colors.textColor } }
+          }
+        }
+      });
+    }
+
+    function updateCharts() {
+      if (!salesChartInstance || !ordersChartInstance) return;
+      const colors = getThemeColors();
+
+      const labels = datasetData.map(d => d.month);
+      const salesValues = datasetData.map(d => d.sales);
+      const ordersValues = datasetData.map(d => d.orders);
+
+      salesChartInstance.data.labels = labels;
+      salesChartInstance.data.datasets[0].data = salesValues;
+      salesChartInstance.data.datasets[0].borderColor = colors.cyanLine;
+      salesChartInstance.data.datasets[0].backgroundColor = colors.cyanFill;
+      salesChartInstance.options.scales.x.ticks.color = colors.textColor;
+      salesChartInstance.options.scales.y.ticks.color = colors.textColor;
+      salesChartInstance.options.scales.x.grid.color = colors.gridColor;
+      salesChartInstance.options.scales.y.grid.color = colors.gridColor;
+      salesChartInstance.options.plugins.legend.labels.color = colors.textColor;
+      salesChartInstance.update();
+
+      ordersChartInstance.data.labels = labels;
+      ordersChartInstance.data.datasets[0].data = ordersValues;
+      ordersChartInstance.data.datasets[0].backgroundColor = colors.tealBar;
+      ordersChartInstance.options.scales.x.ticks.color = colors.textColor;
+      ordersChartInstance.options.scales.y.ticks.color = colors.textColor;
+      ordersChartInstance.options.scales.x.grid.color = colors.gridColor;
+      ordersChartInstance.options.scales.y.grid.color = colors.gridColor;
+      ordersChartInstance.options.plugins.legend.labels.color = colors.textColor;
+      ordersChartInstance.update();
+    }
+
+    // Filter controls
+    const filterAll = document.getElementById('chart-filter-all');
+    const filterSales = document.getElementById('chart-filter-sales');
+    const filterOrders = document.getElementById('chart-filter-orders');
+    const lineWrapper = document.getElementById('line-chart-wrapper');
+    const barWrapper = document.getElementById('bar-chart-wrapper');
+
+    if (filterAll && filterSales && filterOrders) {
+      filterAll.addEventListener('click', () => {
+        filterAll.classList.add('active');
+        filterSales.classList.remove('active');
+        filterOrders.classList.remove('active');
+        lineWrapper.style.display = 'flex';
+        barWrapper.style.display = 'flex';
+      });
+
+      filterSales.addEventListener('click', () => {
+        filterSales.classList.add('active');
+        filterAll.classList.remove('active');
+        filterOrders.classList.remove('active');
+        lineWrapper.style.display = 'flex';
+        barWrapper.style.display = 'none';
+      });
+
+      filterOrders.addEventListener('click', () => {
+        filterOrders.classList.add('active');
+        filterAll.classList.remove('active');
+        filterSales.classList.remove('active');
+        lineWrapper.style.display = 'none';
+        barWrapper.style.display = 'flex';
+      });
+    }
+
+    // Randomize Data Button
+    const randomizeBtn = document.getElementById('randomize-data-btn');
+    if (randomizeBtn) {
+      randomizeBtn.addEventListener('click', () => {
+        datasetData = datasetData.map(d => ({
+          month: d.month,
+          sales: Math.floor(100 + Math.random() * 200),
+          orders: Math.floor(40 + Math.random() * 80)
+        }));
+        updateCharts();
+        renderDatasetTable();
+        showToast('Simulated random sales & orders dataset!', 'info');
+      });
+    }
+
+    // Restore Original Sample Dataset Button
+    const resetBtn = document.getElementById('reset-dataset-btn');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        datasetData = [
+          { month: 'Jan', sales: 120, orders: 50 },
+          { month: 'Feb', sales: 150, orders: 60 },
+          { month: 'Mar', sales: 180, orders: 75 },
+          { month: 'Apr', sales: 170, orders: 68 },
+          { month: 'May', sales: 210, orders: 85 },
+          { month: 'Jun', sales: 240, orders: 95 }
+        ];
+        updateCharts();
+        renderDatasetTable();
+        showToast('Sample dataset restored (Jan–Jun)!', 'success');
+      });
+    }
+
+    // Theme toggle observer
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        setTimeout(updateCharts, 100);
+      });
+    }
+
+    renderDatasetTable();
+    createCharts();
+  }
+
+  initExp3Dashboard();
 
 });

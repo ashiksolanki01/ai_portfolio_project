@@ -15,6 +15,9 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
+  <!-- Chart.js Visualization Library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -43,6 +46,7 @@
           <li><a href="#about" class="nav-link">About</a></li>
           <li><a href="#terminal" class="nav-link">Terminal $</a></li>
           <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#labs" class="nav-link">Practical Labs</a></li>
           <li><a href="#skills" class="nav-link">Skills</a></li>
           <li><a href="#timeline" class="nav-link">Timeline</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -270,6 +274,244 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Practical Labs & Experiments Section (Exp 2 & Exp 3) -->
+    <section id="labs">
+      <div class="section-header">
+        <div class="section-tag"><i class="fa-solid fa-flask"></i> ACADEMIC LABS</div>
+        <h2 class="section-title">Interactive Practical Labs</h2>
+        <p class="section-subtitle">Real-time DOM manipulation &amp; Chart.js dataset visualization dashboards built for Intelligent Web Designing.</p>
+      </div>
+
+      <!-- Labs Container Grid -->
+      <div class="labs-container">
+
+        <!-- ==========================================
+             EXPERIMENT 2: DYNAMIC RESPONSIVE UI ENGINE
+             ========================================== -->
+        <div class="lab-card" id="exp2-card">
+          <div class="lab-card-header">
+            <div class="lab-badge"><i class="fa-solid fa-bolt"></i> Experiment 2</div>
+            <h3 class="lab-title">Dynamic UI &amp; Real-Time DOM Text Engine</h3>
+            <p class="lab-subtitle">Capture user form input, validate data, and dynamically update webpage text, headings, and styling with real-time feedback.</p>
+          </div>
+
+          <!-- Academic Spec Collapsible / Accordion -->
+          <details class="lab-spec-details">
+            <summary><i class="fa-solid fa-book-open"></i> Experiment 2 Specification &amp; Academic Overview</summary>
+            <div class="spec-content">
+              <div class="spec-grid">
+                <div>
+                  <strong><i class="fa-solid fa-bullseye"></i> Aim:</strong>
+                  <p>To build a responsive web interface that dynamically updates text based on user input using JavaScript.</p>
+                </div>
+                <div>
+                  <strong><i class="fa-solid fa-list-check"></i> Objectives:</strong>
+                  <ul>
+                    <li>Learn DOM manipulation &amp; event handling.</li>
+                    <li>Capture user input using form elements.</li>
+                    <li>Update webpage content dynamically in real-time.</li>
+                    <li>Improve user interaction through instant validation feedback.</li>
+                  </ul>
+                </div>
+                <div>
+                  <strong><i class="fa-solid fa-screwdriver-wrench"></i> Tools Required:</strong>
+                  <p>HTML5, CSS3, JavaScript (ES6+), Visual Studio Code.</p>
+                </div>
+                <div>
+                  <strong><i class="fa-solid fa-trophy"></i> Expected Outcome:</strong>
+                  <p>Students will master event handling, DOM tree manipulation, and responsive UI feedback systems.</p>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <!-- Interactive Playground Grid -->
+          <div class="exp2-playground">
+            <!-- Left: Interactive Form Controls -->
+            <div class="exp2-form-container">
+              <h4 class="playground-heading"><i class="fa-solid fa-sliders"></i> Input Form Controls</h4>
+              
+              <div class="form-group">
+                <label class="form-label" for="exp2-heading-input">Heading / Title Text:</label>
+                <input type="text" id="exp2-heading-input" class="form-input" placeholder="Type a dynamic heading (e.g., Welcome to AI Lab!)..." value="Dynamic AI Web Assistant" />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="exp2-paragraph-input">Subheading / Description Paragraph:</label>
+                <textarea id="exp2-paragraph-input" class="form-textarea" rows="3" placeholder="Type a message or prompt description...">DOM manipulation enables real-time text updates, dynamic styling changes, and interactive validation feedback without re-loading the page.</textarea>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group half-width">
+                  <label class="form-label" for="exp2-badge-select">Badge Tag Style:</label>
+                  <select id="exp2-badge-select" class="form-input">
+                    <option value="cyan">Cyan Glow (Default)</option>
+                    <option value="teal">Teal Matrix</option>
+                    <option value="purple">Purple Neural</option>
+                    <option value="amber">Amber Alert</option>
+                    <option value="pink">Pink Accent</option>
+                  </select>
+                </div>
+
+                <div class="form-group half-width">
+                  <label class="form-label" for="exp2-style-select">Text Style Variant:</label>
+                  <select id="exp2-style-select" class="form-input">
+                    <option value="normal">Normal Text</option>
+                    <option value="uppercase">UPPERCASE</option>
+                    <option value="lowercase">lowercase</option>
+                    <option value="monospace">Monospace Code ($)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="exp2-btn-group">
+                <button id="exp2-reset-btn" class="btn btn-outline btn-sm"><i class="fa-solid fa-rotate-left"></i> Reset Form</button>
+                <button id="exp2-sample-btn" class="btn btn-secondary btn-sm"><i class="fa-solid fa-lightbulb"></i> Insert Sample</button>
+              </div>
+            </div>
+
+            <!-- Right: Real-time Live Output Preview & Feedback -->
+            <div class="exp2-preview-container">
+              <h4 class="playground-heading"><i class="fa-solid fa-desktop"></i> Dynamic Webpage Preview</h4>
+              
+              <!-- Validation Status Banner -->
+              <div id="exp2-validation-box" class="validation-box status-valid">
+                <i id="exp2-val-icon" class="fa-solid fa-circle-check"></i>
+                <span id="exp2-val-msg">Input valid: Ready for live display</span>
+              </div>
+
+              <!-- Live Card Container -->
+              <div class="preview-card-box" id="exp2-preview-box">
+                <div class="preview-badge badge-cyan" id="exp2-preview-badge">Live Output Tag</div>
+                <h3 class="preview-heading" id="exp2-preview-heading">Dynamic AI Web Assistant</h3>
+                <p class="preview-paragraph" id="exp2-preview-paragraph">DOM manipulation enables real-time text updates, dynamic styling changes, and interactive validation feedback without re-loading the page.</p>
+                
+                <!-- Metadata Indicators -->
+                <div class="preview-meta">
+                  <span class="meta-chip"><i class="fa-solid fa-font"></i> Chars: <strong id="exp2-char-count">139</strong></span>
+                  <span class="meta-chip"><i class="fa-solid fa-i-cursor"></i> Words: <strong id="exp2-word-count">20</strong></span>
+                  <span class="meta-chip"><i class="fa-solid fa-clock"></i> Updated: <strong id="exp2-time-stamp">Just now</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==========================================
+             EXPERIMENT 3: CHART.JS DATASET DASHBOARD
+             ========================================== -->
+        <div class="lab-card" id="exp3-card">
+          <div class="lab-card-header">
+            <div class="lab-badge lab-badge-teal"><i class="fa-solid fa-chart-line"></i> Experiment 3</div>
+            <h3 class="lab-title">Interactive Chart.js Visualization Dashboard</h3>
+            <p class="lab-subtitle">Visualize dataset statistics using interactive Line and Bar charts with Chart.js, responsive layouts, and a real-time dataset editor.</p>
+          </div>
+
+          <!-- Academic Spec Collapsible / Accordion -->
+          <details class="lab-spec-details">
+            <summary><i class="fa-solid fa-book-open"></i> Experiment 3 Specification &amp; Academic Overview</summary>
+            <div class="spec-content">
+              <div class="spec-grid">
+                <div>
+                  <strong><i class="fa-solid fa-bullseye"></i> Aim:</strong>
+                  <p>To create an interactive dashboard using Chart.js for displaying dataset statistics through Line and Bar charts.</p>
+                </div>
+                <div>
+                  <strong><i class="fa-solid fa-list-check"></i> Objectives:</strong>
+                  <ul>
+                    <li>Learn Chart.js fundamentals &amp; canvas rendering.</li>
+                    <li>Visualize dataset statistics using different chart types.</li>
+                    <li>Create interactive, responsive, and customizable charts.</li>
+                    <li>Compare multiple datasets (Monthly Sales vs. Orders) visually.</li>
+                  </ul>
+                </div>
+                <div>
+                  <strong><i class="fa-solid fa-screwdriver-wrench"></i> Tools Required:</strong>
+                  <p>HTML5, CSS3, JavaScript, Chart.js Library CDN, VS Code.</p>
+                </div>
+                <div>
+                  <strong><i class="fa-solid fa-trophy"></i> Expected Outcome:</strong>
+                  <p>Students will gain practical experience in data visualization, statistical data representation, and responsive dashboards.</p>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <!-- Dashboard Toolbar & Controls -->
+          <div class="dashboard-controls">
+            <div class="controls-left">
+              <span class="control-label"><i class="fa-solid fa-filter"></i> Dataset View:</span>
+              <button class="chip-btn active" id="chart-filter-all">Both Charts</button>
+              <button class="chip-btn" id="chart-filter-sales">Sales Only</button>
+              <button class="chip-btn" id="chart-filter-orders">Orders Only</button>
+            </div>
+            <div class="controls-right">
+              <button id="randomize-data-btn" class="btn btn-outline btn-sm"><i class="fa-solid fa-shuffle"></i> Simulate Random Data</button>
+              <button id="reset-dataset-btn" class="btn btn-secondary btn-sm"><i class="fa-solid fa-rotate"></i> Restore Sample Dataset</button>
+            </div>
+          </div>
+
+          <!-- Charts Visualization Grid -->
+          <div class="charts-grid">
+            <!-- Line Chart Card -->
+            <div class="chart-card" id="line-chart-wrapper">
+              <div class="chart-card-header">
+                <div class="chart-info">
+                  <h4 class="chart-title"><i class="fa-solid fa-chart-line" style="color: var(--accent-cyan);"></i> Monthly Sales Trend (Line Chart)</h4>
+                  <p class="chart-desc">Sample dataset showing monthly sales figures from Jan to Jun.</p>
+                </div>
+                <span class="chart-badge badge-line">Line Chart</span>
+              </div>
+              <div class="chart-canvas-container">
+                <canvas id="salesLineChart"></canvas>
+              </div>
+            </div>
+
+            <!-- Bar Chart Card -->
+            <div class="chart-card" id="bar-chart-wrapper">
+              <div class="chart-card-header">
+                <div class="chart-info">
+                  <h4 class="chart-title"><i class="fa-solid fa-chart-column" style="color: var(--accent-teal);"></i> Category Comparison (Bar Chart)</h4>
+                  <p class="chart-desc">Sample dataset comparing monthly order volume from Jan to Jun.</p>
+                </div>
+                <span class="chart-badge badge-bar">Bar Chart</span>
+              </div>
+              <div class="chart-canvas-container">
+                <canvas id="ordersBarChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Sample Dataset Table & Editor -->
+          <div class="dataset-section">
+            <div class="dataset-header">
+              <h4><i class="fa-solid fa-table"></i> Sample Dataset &amp; Real-Time Values Editor</h4>
+              <p>Edit figures below to see live updates reflected across the Chart.js visualization dashboard instantly!</p>
+            </div>
+
+            <div class="table-responsive">
+              <table class="dataset-table">
+                <thead>
+                  <tr>
+                    <th>Month</th>
+                    <th>Sales (Units)</th>
+                    <th>Orders (Units)</th>
+                    <th>Sales Trend</th>
+                    <th>Orders Ratio</th>
+                  </tr>
+                </thead>
+                <tbody id="dataset-table-body">
+                  <!-- Injected via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
       </div>
     </section>
 
